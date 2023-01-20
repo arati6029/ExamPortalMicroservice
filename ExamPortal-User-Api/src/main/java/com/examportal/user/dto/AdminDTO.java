@@ -5,9 +5,7 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
-
 import com.examportal.user.model.RoleEnum;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

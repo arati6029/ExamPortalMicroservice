@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.examportal.user.dto.ExamAdminDTO;
 import com.examportal.user.dto.ExamAdminListDTO;
 import com.examportal.user.model.Client;
-
 import com.examportal.user.model.ExamAdmin;
 import com.examportal.user.model.Subscription;
 

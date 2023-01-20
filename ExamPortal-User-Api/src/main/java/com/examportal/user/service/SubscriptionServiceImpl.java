@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.examportal.user.dto.SubscriptionDTO;
+import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
 import com.examportal.user.model.Subscription;
 import com.examportal.user.repository.SubscriptionRepository;
-
-import exceptionhandler.custom_exception.ResourceNotFoundException;
 
 
 

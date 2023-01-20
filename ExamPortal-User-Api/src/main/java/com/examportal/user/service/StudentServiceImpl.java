@@ -9,14 +9,12 @@ import org.springframework.web.client.RestTemplate;
 import com.examportal.user.dto.ExamScheduleDTO;
 import com.examportal.user.dto.StudentDTO;
 import com.examportal.user.dto.StudentListDTO;
-
+import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
+import com.examportal.user.exceptionhandler.custom_exception.UserNotFoundException;
 import com.examportal.user.model.Student;
 import com.examportal.user.repository.AddressRepository;
 import com.examportal.user.repository.ClientRepository;
 import com.examportal.user.repository.StudentRepository;
-
-import exceptionhandler.custom_exception.ResourceNotFoundException;
-import exceptionhandler.custom_exception.UserNotFoundException;
 
 import java.util.ArrayList;
 import java.util.List;

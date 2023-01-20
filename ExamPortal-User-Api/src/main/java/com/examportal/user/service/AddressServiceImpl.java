@@ -6,9 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
 import com.examportal.user.repository.AddressRepository;
-
-import exceptionhandler.custom_exception.ResourceNotFoundException;
 
 
 

@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-
 import com.examportal.user.dto.StudentDTO;
 import com.examportal.user.dto.StudentListDTO;
 import com.examportal.user.model.Address;

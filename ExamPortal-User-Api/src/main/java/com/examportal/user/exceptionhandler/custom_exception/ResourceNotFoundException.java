@@ -1,4 +1,4 @@
-package exceptionhandler.custom_exception;
+package com.examportal.user.exceptionhandler.custom_exception;
 
 @SuppressWarnings("serial")
 public class ResourceNotFoundException extends RuntimeException {

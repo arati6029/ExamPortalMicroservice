@@ -1,4 +1,4 @@
-package exceptionhandler;
+package com.examportal.user.exceptionhandler;
 
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,7 +14,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import com.examportal.user.dto.ApiResponse;
-import exceptionhandler.custom_exception.ResourceNotFoundException;
+import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
 
 @ControllerAdvice // Mandatory cls level annotation to tell SC : following is global exc handler
 					// (a spring bean)

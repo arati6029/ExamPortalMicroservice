@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.examportal.user.dto.AdminDTO;
 import com.examportal.user.dto.ApiResponse;
 import com.examportal.user.dto.AuthAdmin;
@@ -36,8 +35,8 @@ import com.examportal.user.dto.LoginRequestDTO;
 import com.examportal.user.dto.StudentDTO;
 import com.examportal.user.dto.client.ClientDTO;
 import com.examportal.user.dto.client.ClientRegisterDto;
-import exceptionhandler.custom_exception.AccountDeactivatedException;
-import exceptionhandler.custom_exception.ResourceNotFoundException;
+import com.examportal.user.exceptionhandler.custom_exception.AccountDeactivatedException;
+import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
 import com.examportal.user.jwt_utils.JwtUtils;
 import com.examportal.user.model.Admin;
 import com.examportal.user.model.Client;

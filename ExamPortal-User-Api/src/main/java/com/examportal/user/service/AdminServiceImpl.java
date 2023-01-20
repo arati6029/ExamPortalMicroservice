@@ -7,26 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.examportal.user.dto.AdminDTO;
+import com.examportal.user.dto.ExamAdminListDTO;
+import com.examportal.user.dto.client.ClientDTO;
+import com.examportal.user.dto.client.ClientListDTO;
+import com.examportal.user.model.Address;
+import com.examportal.user.model.BaseUser;
+import com.examportal.user.model.Client;
+import com.examportal.user.model.Student;
+import com.examportal.user.model.Subscription;
 import com.examportal.user.repository.AddressRepository;
 import com.examportal.user.repository.AdminRepository;
 import com.examportal.user.repository.ClientRepository;
 import com.examportal.user.repository.ExamAdminRepository;
-//import com.examportal.user.repository.ExamRepository;
 import com.examportal.user.repository.StudentRepository;
 import com.examportal.user.repository.SubscriptionRepository;
-import com.examportal.user.dto.AdminDTO;
-import com.examportal.user.dto.ExamAdminListDTO;
-//import com.examportal.user.dto.ExamListDTO;
-import com.examportal.user.dto.client.ClientDTO;
-import com.examportal.user.dto.client.ClientListDTO;
-//import com.examportal.user.exceptionhandler.custom_exception.ResourceNotFoundException;
-//import com.examportal.user.exceptionhandler.custom_exception.UserNotFoundException;
-import com.examportal.user.model.Address;
-import com.examportal.user.model.Client;
-import com.examportal.user.model.Student;
-
-import com.examportal.user.model.Subscription;
-import com.examportal.user.model.BaseUser;
 
 @Service
 @Transactional
@@ -46,7 +41,7 @@ public class AdminServiceImpl implements IAdminService {
 
 	@Override
 	public AdminDTO authenticateAdmin(String email, String password) {
-		return mapper.map(adminRepo.findByEmailAndPassword(email, password).orElseThrow(() -> new exceptionhandler.custom_exception.UserNotFoundException("Invalid email or password")), AdminDTO.class);
+		return mapper.map(adminRepo.findByEmailAndPassword(email, password).orElseThrow(() -> new com.examportal.user.exceptionhandler.custom_exception.UserNotFoundException("Invalid email or password")), AdminDTO.class);
 	}
 	
 	@Override

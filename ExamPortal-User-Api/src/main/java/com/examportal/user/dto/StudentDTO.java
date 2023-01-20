@@ -16,11 +16,11 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.examportal.user.model.Address;
+import com.examportal.user.model.BaseUser;
 import com.examportal.user.model.Client;
 import com.examportal.user.model.GenderEnum;
 import com.examportal.user.model.RoleEnum;
 import com.examportal.user.model.Subscription;
-import com.examportal.user.model.BaseUser;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

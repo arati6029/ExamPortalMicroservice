@@ -8,8 +8,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-
-
 import com.examportal.user.model.BaseUser;
 import com.examportal.user.repository.AdminRepository;
 import com.examportal.user.repository.ClientRepository;
