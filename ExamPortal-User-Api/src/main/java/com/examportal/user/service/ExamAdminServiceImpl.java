@@ -44,9 +44,8 @@ public class ExamAdminServiceImpl implements IExamAdminService {
 
 	@Override
 	public ExamAdmin registerExamAdmin(ExamAdmin transientExamAdmin, String pinCode, long clientId) {
-		transientExamAdmin.setClientId(clientId);
-		transientExamAdmin.setPincode(pinCode);
-		
+		transientExamAdmin.setClient(clientRepo.findById(clientId).orElseThrow(() -> new UserNotFoundException("Invalid Client Id")));
+		transientExamAdmin.setAddress(addressRepo.findById(pinCode).orElseThrow(() -> new ResourceNotFoundException("Invalid Pincode")));
 		return examAdminRepo.save(transientExamAdmin);
 	}
 	
@@ -58,12 +57,12 @@ public class ExamAdminServiceImpl implements IExamAdminService {
 	@Override
 	public ExamAdminDTO updateExamAdmin(ExamAdmin transientExamAdmin, String pinCode) {
 		ExamAdmin examAdmin = examAdminRepo.findById(transientExamAdmin.getId()).orElseThrow(() -> new UserNotFoundException("Invalid Exam Admin Id"));
-		transientExamAdmin.setClientId(examAdmin.getClientId());
+		transientExamAdmin.setClient(examAdmin.getClient());
 		transientExamAdmin.setPassword(examAdmin.getPassword());
 		transientExamAdmin.setAccStatus(examAdmin.isAccStatus());
 		transientExamAdmin.setDateStamp(examAdmin.getDateStamp());
 		transientExamAdmin.setRole(examAdmin.getRole());
-		transientExamAdmin.setPincode(pinCode);
+		transientExamAdmin.setAddress(addressRepo.findById(pinCode).orElseThrow());
 		examAdminRepo.save(transientExamAdmin);
 		return mapper.map(transientExamAdmin, ExamAdminDTO.class);
 	}

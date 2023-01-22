@@ -18,14 +18,22 @@ import lombok.Setter;
 import lombok.ToString;
 
 
-@Getter
-@Setter
+//@Getter
+//@Setter
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Entity
 public class ExamAdmin extends BaseUser{
 	
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
 	public ExamAdmin() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -49,10 +57,10 @@ public class ExamAdmin extends BaseUser{
 	@Column(length = 40)
 	private String department;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="c_id",nullable = false)
-//	private Client client;
-	private long clientId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="c_id",nullable = false)
+	private Client client;
+	//private long clientId;
 	
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(nullable = false)
@@ -72,13 +80,7 @@ public class ExamAdmin extends BaseUser{
 
 	
 
-	public long getClientId() {
-		return clientId;
-	}
-
-	public void setClientId(long clientId) {
-		this.clientId = clientId;
-	}
+	
 
 	public LocalDate getDob() {
 		return dob;
@@ -98,10 +100,10 @@ public class ExamAdmin extends BaseUser{
 
 	
 
-	public ExamAdmin(String department, long clientId, LocalDate dob, GenderEnum gender) {
+	public ExamAdmin(String department, Client client, LocalDate dob, GenderEnum gender) {
 		super();
 		this.department = department;
-		this.clientId = clientId;
+		this.client = client;
 		this.dob = dob;
 		this.gender = gender;
 	}

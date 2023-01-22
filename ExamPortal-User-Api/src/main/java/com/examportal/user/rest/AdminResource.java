@@ -34,8 +34,10 @@ import com.examportal.user.service.IAdminService;
 import com.examportal.user.service.IClientService;
 import com.examportal.user.service.ISubscriptionService;
 
+import ch.qos.logback.core.util.StringCollectionUtil;
+
 @RestController
-@RequestMapping("/admin")
+@RequestMapping("/admins")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin("*")
 @Validated
@@ -62,12 +64,18 @@ public class AdminResource {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/clients")
 	public ResponseEntity<?> getClientList() {
-		return ResponseEntity.status(HttpStatus.ACCEPTED).body(adminService.getClientDetails());
+		List<ClientListDTO> clientList=adminService.getClientDetails();
+		if(CollectionUtils.isEmpty(clientList)) {
+			return ResponseEntity.noContents.build();
+		}else {
+			return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientList);
+		}
 	}
 	//change client status
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping("/{cId}/client")
 	public ResponseEntity<?> activateDeactivateClient(@PathVariable long cId) {
+		
 		return ResponseEntity.status(HttpStatus.ACCEPTED)
 				.body(new ApiResponse(clientService.activateDeactivateClient(cId)));
 	}
@@ -75,8 +83,12 @@ public class AdminResource {
 	//get subscription list
 	@GetMapping("/subscriptions")
 	public ResponseEntity<?> getAllSubscriptions() {
-		
-		return ResponseEntity.status(HttpStatus.OK).body(subscriptionService.getSubscriptionList());
+		List<String> subscriptionList=subscriptionService.getSubscriptionList();
+		if(CollectionUtils.isEmpty(subscriptionList)) {
+			return ResponseEntity.noContains().build();
+		}else {
+		return ResponseEntity.status(HttpStatus.OK).body(subscriptionList);
+		}
 	}
 	//add new subscription
 	@PreAuthorize("hasAuthority('ADMIN')")
@@ -107,7 +119,12 @@ public class AdminResource {
 	@GetMapping("/{subId}/subscription")
 	public ResponseEntity<?> getSubscriptionDetails(@PathVariable long subId) {
 		//System.out.println("Inside @GetMapping get_sub_list" + subscriptionService.getSubscriptionList());
-		return ResponseEntity.status(HttpStatus.OK).body(subscriptionService.getSubscriptionDetails(subId));
+		Subscription subscription=subscriptionService.getSubscriptionDetails(subId);
+		if(subscription!=null) {
+			return ResponseEntity.status(HttpStatus.OK).body();
+		}else {
+			return ResponseEntity.noContent().build();
+		}
 	}
 
 }

@@ -53,7 +53,7 @@ import com.examportal.user.service.IExamAdminService;
 import com.examportal.user.service.IStudentService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin("*")
 @Validated

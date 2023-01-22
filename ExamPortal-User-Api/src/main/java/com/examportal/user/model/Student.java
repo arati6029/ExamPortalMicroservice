@@ -28,8 +28,8 @@ gender
 
 @Getter
 @Setter
-@ToString(exclude = "client")
-@NoArgsConstructor
+@ToString
+//@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 public class Student extends BaseUser{
@@ -53,10 +53,10 @@ public class Student extends BaseUser{
 	}
 	private int rollNo;
 	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name="c_id",nullable = false)
-//	private Client client;
-	private long examAdminId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="c_id",nullable = false)
+	private ExamAdmin examAdmin;
+	//private long examAdminId;
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@Column(nullable = false)
 	private LocalDate dob;
@@ -72,11 +72,11 @@ public class Student extends BaseUser{
 		this.rollNo = rollNo;
 	}
 	
-	public long getExamAdminId() {
-		return examAdminId;
+	public ExamAdmin getExamAdmin() {
+		return examAdmin;
 	}
-	public void setExamAdminId(long examAdminId) {
-		this.examAdminId = examAdminId;
+	public void setExamAdmin(ExamAdmin examAdmin) {
+		this.examAdmin = examAdmin;
 	}
 	public LocalDate getDob() {
 		return dob;
@@ -94,10 +94,10 @@ public class Student extends BaseUser{
 		super(id);
 		// TODO Auto-generated constructor stub
 	}
-	public Student(long id, int rollNo, long examAdminId, LocalDate dob, GenderEnum gender) {
+	public Student(long id, int rollNo, ExamAdmin examAdmin, LocalDate dob, GenderEnum gender) {
 		super(id);
 		this.rollNo = rollNo;
-		this.examAdminId = examAdminId;
+		this.examAdmin = examAdmin;
 		this.dob = dob;
 		this.gender = gender;
 	}

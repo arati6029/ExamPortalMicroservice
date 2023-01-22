@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.examportal.user.model.Address;
 
-public interface AddressRepository extends JpaRepository<Address, Long> {
+public interface AddressRepository extends JpaRepository<Address, String> {
 	Optional<Address> findByPinCode(String pinCode);
 	
 	@Query("SELECT pinCode FROM Address")

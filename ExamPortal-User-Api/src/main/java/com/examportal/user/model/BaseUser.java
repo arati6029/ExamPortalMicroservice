@@ -20,8 +20,8 @@ import lombok.ToString;
 @MappedSuperclass
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @ToString(exclude = {"password", "dateStamp"})
 /*
  * User
@@ -136,11 +136,12 @@ public class BaseUser extends BaseEntity {
 	@Column(name="address_line2",length = 50)
 	private String addressLine2;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "pinCode", nullable = false)
-//	private Address address;
+	@ManyToOne
+	@JoinColumn(name = "pinCode", nullable = false)
+	private Address address;
 	
-	private String pincode;
+	//private String pincode;
+	
 	public String getName() {
 		return name;
 	}
@@ -194,7 +195,7 @@ public class BaseUser extends BaseEntity {
 	}
 
 	public BaseUser(String name, String email, String mobile, String password, RoleEnum role, boolean accStatus,
-			LocalDateTime dateStamp, String addressLine1, String addressLine2, String pincode) {
+			LocalDateTime dateStamp, String addressLine1, String addressLine2, Address address) {
 		super();
 		this.name = name;
 		this.email = email;
@@ -205,7 +206,7 @@ public class BaseUser extends BaseEntity {
 		this.dateStamp = dateStamp;
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
-		this.pincode = pincode;
+		this.address = address;
 	}
 
 	public void setDateStamp(LocalDateTime dateStamp) {
@@ -228,12 +229,12 @@ public class BaseUser extends BaseEntity {
 		this.addressLine2 = addressLine2;
 	}
 
-	public String getPincode() {
-		return pincode;
+	public Address getAddress() {
+		return address;
 	}
 
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 	

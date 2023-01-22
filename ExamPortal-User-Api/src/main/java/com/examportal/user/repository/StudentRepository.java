@@ -26,19 +26,19 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
 	@Query("SELECT s.id FROM Student s WHERE s.email=?1")
 	Optional<Long> findIdByEmail(String email);
 	
-	@Query("SELECT new com.examportal.user.dto.StudentListDTO(s.id, s.rollNo, s.name, s.email,s.dob, s.gender, s.accStatus) FROM Student s WHERE s.examAdminId=?1 ORDER BY s.rollNo")
+	@Query("SELECT new com.examportal.user.dto.StudentListDTO(s.id, s.rollNo, s.name, s.email,s.dob, s.gender, s.accStatus) FROM Student s WHERE s.examAdmin.id=?1 ORDER BY s.rollNo")
 	Optional<List<StudentListDTO>> findListByExamAdminId(long eaId);
 	
 //	@Query("SELECT s FROM Student s JOIN FETCH s.client c WHERE c.id=?1")
 //	Optional<List<Student>> findByClientId(Long cId);
-	@Query("SELECT s FROM Student s WHERE s.examAdminId=?1")
+	@Query("SELECT s FROM Student s WHERE s.examAdmin.id=?1")
 	Optional<List<Student>> findByExamAdminId(long examAdminId);
 	@Query("SELECT s FROM Student s WHERE s.id=?1")
 	Optional<Student> findById(long id);
 	
 	Student findByEmail(String email);
 	
-	@Query("SELECT new com.examportal.user.dto.StudentDTO(e.id, e.name, e.email, e.mobile, e.role, e.accStatus,e.dateStamp, e.addressLine1, e.addressLine2, e.pincode, e.rollNo, e.examAdminId, e.dob, e.gender) FROM Student e WHERE e.email =?1 ")
+	@Query("SELECT new com.examportal.user.dto.StudentDTO(e.id, e.name, e.email, e.mobile, e.role, e.accStatus,e.dateStamp, e.addressLine1, e.addressLine2, e.address, e.rollNo, e.examAdmin, e.dob, e.gender) FROM Student e INNER JOIN e.examAdmin c WHERE e.email =?1 ")
 	StudentDTO findDTOByEmail(String email);
 	//@Query("SELECT new com.app.dto.ExamListDTO() FROM Student s INNER JOIN Client c on s.client.id=c.id INNER JOIN Result r on s.id=r.student.id where ")
 //	 @Query("select new com.app.dto.ExamListDTO(e.id, e.examName, ea.id, e.scheduledDate, e.scheduledTime, e.examStatus, e.examDuration) from Exam e inner join ExamAdmin ea on e.examAdmin.id=ea.id inner join Client c on ea.client.id=c.id where e.id not in( select r.exam.id from Result r where r.student.id=?1 and r.exam.id in (select e.id from Exam e inner join ExamAdmin ea on e.examAdmin.id=ea.id inner join Client c on ea.client.id=c.id))")

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.examportal.user.dto.ApiResponse;
 import com.examportal.user.dto.ChangePasswordDTO;
 import com.examportal.user.dto.ExamAdminRegisterDto;
+import com.examportal.user.dto.client.ClientDTO;
 import com.examportal.user.dto.client.ClientRegisterDto;
 import com.examportal.user.dto.client.ClientUpdateDto;
 import com.examportal.user.model.Client;
@@ -34,7 +35,7 @@ import com.examportal.user.service.IClientService;
 import com.examportal.user.service.IExamAdminService;
 
 @RestController
-@RequestMapping("/client")
+@RequestMapping("/clients")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin("*")
 @Validated
@@ -83,11 +84,15 @@ public class ClientResource {
 	@PutMapping
 	public ResponseEntity<?> updtateClient(@RequestBody @Valid ClientUpdateDto newClientDto) {
 		// String name, String email, String mobile, String password, RoleEnum role
-
-		return ResponseEntity.status(HttpStatus.CREATED).body(clientService.updateClient(
-				new Client(newClientDto.getId(), newClientDto.getName(), newClientDto.getEmail(),
-						newClientDto.getMobile(), newClientDto.getAddressLine1(), newClientDto.getAddressLine2()),
-				newClientDto.getPinCode()));
+		ClientDTO client= clientService.updateClient(
+		new Client(newClientDto.getId(), newClientDto.getName(), newClientDto.getEmail(),
+				newClientDto.getMobile(), newClientDto.getAddressLine1(), newClientDto.getAddressLine2()),
+		newClientDto.getPinCode());
+		if(client!=null) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(client);
+		}else {
+			return ResponseEntity.status(HttpsStatus.BAD_REQUEST).body(new ClientDTO());
+		}
 	}
 	//add examadmin
 	@PreAuthorize("hasAuthority('CLIENT')")
@@ -105,7 +110,12 @@ public class ClientResource {
 	@PreAuthorize("hasAuthority('CLIENT')")
 	@GetMapping("/{cId}/exam_admins")
 	public ResponseEntity<?> getExamAdminList(@PathVariable long cId) {
-		return ResponseEntity.status(HttpStatus.OK).body(examAdminService.getExamAdminList(cId));
+		List<ExamAdminListDTO> examAdminList=examAdminService.getExamAdminList(cId);
+		if(CollectionUtils.isEmpty(examAdminList)) {
+			return ResponseEntity.noContent().build();
+		}else {
+		return ResponseEntity.status(HttpStatus.OK).body(examAdminList);
+		}
 	}
 	
 	//change exam admin status

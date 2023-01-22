@@ -32,7 +32,7 @@ import com.examportal.user.model.Student;
 import com.examportal.user.service.IStudentService;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/students")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin("*")
 @Validated

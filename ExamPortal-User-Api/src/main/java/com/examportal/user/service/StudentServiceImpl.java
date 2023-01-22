@@ -14,6 +14,7 @@ import com.examportal.user.exceptionhandler.custom_exception.UserNotFoundExcepti
 import com.examportal.user.model.Student;
 import com.examportal.user.repository.AddressRepository;
 import com.examportal.user.repository.ClientRepository;
+import com.examportal.user.repository.ExamAdminRepository;
 import com.examportal.user.repository.StudentRepository;
 
 import java.util.ArrayList;
@@ -31,7 +32,8 @@ public class StudentServiceImpl implements IStudentService {
 	private AddressRepository addressRepo;
 	@Autowired
 	private StudentRepository studentRepo;
-	
+	@Autowired
+	private ExamAdminRepository examAdminRepo;
 	@Autowired
 	private ModelMapper mapper;
 	@Autowired
@@ -40,8 +42,9 @@ public class StudentServiceImpl implements IStudentService {
 //private RestTemplate restTemplate;
 	@Override
 	public Student registerStudent(Student transientStudent, String pinCode, long examAdminId) {
-		transientStudent.setExamAdminId(examAdminId);
-		transientStudent.setPincode(pinCode);
+		transientStudent.setExamAdmin(examAdminRepo.findById(examAdminId).orElseThrow(()->new UserNotFoundException("Invalid Exam Admin Id")));
+		transientStudent.setAddress(
+				addressRepo.findById(pinCode).orElseThrow(() -> new ResourceNotFoundException("Invalid Pincode")));
 		return studentRepo.save(transientStudent);
 	}
 

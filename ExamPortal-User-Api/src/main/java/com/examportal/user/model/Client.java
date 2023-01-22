@@ -20,7 +20,7 @@ exam_count
 
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @ToString(exclude = "subscription")
 @Entity
@@ -52,10 +52,10 @@ public class Client extends BaseUser{
 		this.examCount = examCount;
 	}
 
-//	@OneToOne
-//	@JoinColumn(name = "sub_id")
-//	private Subscription subscription;
-	private long subscriptionId;
+	@OneToOne
+	@JoinColumn(name = "sub_id")
+	private Subscription subscription;
+	
 	private int examCount;
 
 

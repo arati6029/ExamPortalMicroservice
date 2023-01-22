@@ -46,8 +46,8 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public Client registerClient(Client transientClient, String pinCode, String subscriptionName) {
 		Subscription subscription = subscriptionRepo.findByPlanName(subscriptionName).orElseThrow(() -> new ResourceNotFoundException("Subscription Not Found"));
-		transientClient.setPincode(pinCode);
-		transientClient.setSubscriptionId(subscription.getId());
+		transientClient.setAddress(addressRepo.findByPinCode(pinCode).orElseThrow(()->new ResourceNotFoundException("Invalid Pincode")));
+		transientClient.setSubscription(subscriptionRepo.findByPlanName(subscriptionName).orElseThrow(()->new ResourceNotFoundException("Invalid Subscription Name")));
 		return clientRepo.save(transientClient);
 	}
 
@@ -59,8 +59,8 @@ public class ClientServiceImpl implements IClientService {
 	@Override
 	public ClientDTO updateClient(Client transientClient, String pinCode) {
 		Client client = clientRepo.findById(transientClient.getId()).orElseThrow(() -> new UserNotFoundException("Invalid Client Id"));
-		transientClient.setPincode(pinCode);
-		transientClient.setSubscriptionId(client.getSubscriptionId());
+		transientClient.setAddress(addressRepo.findByPinCode(pinCode).orElseThrow(()->new ResourceNotFoundException("Invalid Pincode")));
+		transientClient.setSubscription(transientClient.getSubscription());
 		transientClient.setAccStatus(client.isAccStatus());
 		transientClient.setDateStamp(client.getDateStamp());
 		transientClient.setPassword(client.getPassword());

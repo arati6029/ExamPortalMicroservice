@@ -39,7 +39,7 @@ import com.examportal.user.service.IExamAdminService;
 import com.examportal.user.service.IStudentService;
 
 @RestController
-@RequestMapping("/exam_admin")
+@RequestMapping("/exam_admins")
 //@CrossOrigin(origins = "http://localhost:3000")
 @CrossOrigin("*")
 @Validated
@@ -84,11 +84,16 @@ public class ExamAdminResource {
 	@PreAuthorize("hasAuthority('EXAM_ADMIN')")
 	@PutMapping
 	public ResponseEntity<?> updateExamAdmin(@RequestBody @Valid ExamAdminRegisterDto examAdminDto) {
+		ExamAdminDTO examAdmin=examAdminService.updateExamAdmin(new ExamAdmin(examAdminDto.getId(),
+				examAdminDto.getName(), examAdminDto.getEmail(), examAdminDto.getMobile(), RoleEnum.EXAM_ADMIN,
+				examAdminDto.getAddressLine1(), examAdminDto.getAddressLine2(), examAdminDto.getDepartment(),
+				examAdminDto.getDob(), examAdminDto.getGender()), examAdminDto.getPinCode());
+		if(CollectionUtils.isEmpty(examAdmin)) {
+			return ResponseEntity.noContent().build();
+		}else {
 		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(examAdminService.updateExamAdmin(new ExamAdmin(examAdminDto.getId(),
-						examAdminDto.getName(), examAdminDto.getEmail(), examAdminDto.getMobile(), RoleEnum.EXAM_ADMIN,
-						examAdminDto.getAddressLine1(), examAdminDto.getAddressLine2(), examAdminDto.getDepartment(),
-						examAdminDto.getDob(), examAdminDto.getGender()), examAdminDto.getPinCode()));
+				.body(examAdmin);
+		}
 	}
 	//add student
 	@PreAuthorize("hasAuthority('EXAM_ADMIN')")
