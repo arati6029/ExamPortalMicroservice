@@ -60,12 +60,14 @@ public class Client extends BaseUser{
 
 
 
-	public long getSubscriptionId() {
-		return subscriptionId;
+	
+
+	public Subscription getSubscription() {
+		return subscription;
 	}
 
-	public void setSubscriptionId(long subscriptionId) {
-		this.subscriptionId = subscriptionId;
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
 	}
 
 	public int getExamCount() {

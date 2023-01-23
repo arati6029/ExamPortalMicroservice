@@ -1,5 +1,7 @@
 package com.examportal.user.rest;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examportal.user.dto.ApiResponse;
 import com.examportal.user.dto.ChangePasswordDTO;
+import com.examportal.user.dto.ExamAdminListDTO;
 import com.examportal.user.dto.ExamAdminRegisterDto;
 import com.examportal.user.dto.client.ClientDTO;
 import com.examportal.user.dto.client.ClientRegisterDto;
@@ -91,7 +95,7 @@ public class ClientResource {
 		if(client!=null) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(client);
 		}else {
-			return ResponseEntity.status(HttpsStatus.BAD_REQUEST).body(new ClientDTO());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ClientDTO());
 		}
 	}
 	//add examadmin

@@ -82,11 +82,11 @@ public class StudentServiceImpl implements IStudentService {
 	public StudentDTO updateStudent(Student transientStudent, String pinCode) {
 		Student student = studentRepo.findById(transientStudent.getId()).orElseThrow(() -> new UserNotFoundException("Invalid Student Id"));
 		transientStudent.setAccStatus(student.isAccStatus());
-		transientStudent.setExamAdminId(student.getExamAdminId());;
+		transientStudent.setExamAdmin(student.getExamAdmin());;
 		transientStudent.setPassword(student.getPassword());
 		transientStudent.setDateStamp(student.getDateStamp());
 		transientStudent.setRole(student.getRole());
-		transientStudent.setPincode(pinCode);
+		transientStudent.setAddress(addressRepo.findById(pinCode).orElseThrow(() -> new UserNotFoundException("Invalid Student Id")));
 		StudentDTO studentDTO = mapper.map(transientStudent, StudentDTO.class);
 		studentRepo.save(transientStudent);
 	   return studentDTO;
@@ -94,7 +94,7 @@ public class StudentServiceImpl implements IStudentService {
 
 	@Override
 	public String activateDeactivateStudent(long id) {
-		Student student = studentRepo.findById(id).orElseThrow(() -> new UserNotFoundException("Invalid Student Id"));
+		Student student = studentRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Invalid Student Id"));
 		if (student.isAccStatus()) {
 			student.setAccStatus(false);
 			return "Student Account Deactivated SuccessFully";

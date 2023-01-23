@@ -1,15 +1,19 @@
 package com.examportal.user.rest;
 
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +29,7 @@ import com.examportal.user.dto.ApiResponse;
 import com.examportal.user.dto.ChangePasswordDTO;
 import com.examportal.user.dto.LoginRequestDTO;
 import com.examportal.user.dto.SubscriptionDTO;
+import com.examportal.user.dto.client.ClientListDTO;
 import com.examportal.user.dto.client.ClientRegisterDto;
 import com.examportal.user.model.Client;
 import com.examportal.user.model.RoleEnum;
@@ -66,7 +71,7 @@ public class AdminResource {
 	public ResponseEntity<?> getClientList() {
 		List<ClientListDTO> clientList=adminService.getClientDetails();
 		if(CollectionUtils.isEmpty(clientList)) {
-			return ResponseEntity.noContents.build();
+			return ResponseEntity.noContent().build();
 		}else {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(clientList);
 		}
@@ -85,7 +90,7 @@ public class AdminResource {
 	public ResponseEntity<?> getAllSubscriptions() {
 		List<String> subscriptionList=subscriptionService.getSubscriptionList();
 		if(CollectionUtils.isEmpty(subscriptionList)) {
-			return ResponseEntity.noContains().build();
+			return ResponseEntity.noContent().build();
 		}else {
 		return ResponseEntity.status(HttpStatus.OK).body(subscriptionList);
 		}
@@ -121,7 +126,7 @@ public class AdminResource {
 		//System.out.println("Inside @GetMapping get_sub_list" + subscriptionService.getSubscriptionList());
 		Subscription subscription=subscriptionService.getSubscriptionDetails(subId);
 		if(subscription!=null) {
-			return ResponseEntity.status(HttpStatus.OK).body();
+			return ResponseEntity.status(HttpStatus.OK).body(subscription);
 		}else {
 			return ResponseEntity.noContent().build();
 		}

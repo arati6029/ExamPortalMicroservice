@@ -2,7 +2,7 @@ package com.examportal.user.rest;
 
 
 
-import java.time.LocalDate;
+
 
 import javax.validation.Valid;
 
@@ -15,6 +15,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.examportal.user.dto.ApiResponse;
 import com.examportal.user.dto.ChangePasswordDTO;
+import com.examportal.user.dto.ExamAdminDTO;
 import com.examportal.user.dto.ExamAdminRegisterDto;
 import com.examportal.user.dto.StudentRegisterDto;
 import com.examportal.user.dto.client.ClientRegisterDto;
@@ -88,7 +90,7 @@ public class ExamAdminResource {
 				examAdminDto.getName(), examAdminDto.getEmail(), examAdminDto.getMobile(), RoleEnum.EXAM_ADMIN,
 				examAdminDto.getAddressLine1(), examAdminDto.getAddressLine2(), examAdminDto.getDepartment(),
 				examAdminDto.getDob(), examAdminDto.getGender()), examAdminDto.getPinCode());
-		if(CollectionUtils.isEmpty(examAdmin)) {
+		if(examAdmin==null) {
 			return ResponseEntity.noContent().build();
 		}else {
 		return ResponseEntity.status(HttpStatus.CREATED)

@@ -38,7 +38,7 @@ public interface StudentRepository extends JpaRepository<Student, Long>{
 	
 	Student findByEmail(String email);
 	
-	@Query("SELECT new com.examportal.user.dto.StudentDTO(e.id, e.name, e.email, e.mobile, e.role, e.accStatus,e.dateStamp, e.addressLine1, e.addressLine2, e.address, e.rollNo, e.examAdmin, e.dob, e.gender) FROM Student e INNER JOIN e.examAdmin c WHERE e.email =?1 ")
+	@Query("SELECT new com.examportal.user.dto.StudentDTO(e.id, e.name, e.email, e.mobile, e.role, e.accStatus,e.dateStamp, e.addressLine1, e.addressLine2, e.address.pinCode, e.rollNo, e.examAdmin.id, e.dob, e.gender) FROM Student e INNER JOIN e.examAdmin c WHERE e.email =?1 ")
 	StudentDTO findDTOByEmail(String email);
 	//@Query("SELECT new com.app.dto.ExamListDTO() FROM Student s INNER JOIN Client c on s.client.id=c.id INNER JOIN Result r on s.id=r.student.id where ")
 //	 @Query("select new com.app.dto.ExamListDTO(e.id, e.examName, ea.id, e.scheduledDate, e.scheduledTime, e.examStatus, e.examDuration) from Exam e inner join ExamAdmin ea on e.examAdmin.id=ea.id inner join Client c on ea.client.id=c.id where e.id not in( select r.exam.id from Result r where r.student.id=?1 and r.exam.id in (select e.id from Exam e inner join ExamAdmin ea on e.examAdmin.id=ea.id inner join Client c on ea.client.id=c.id))")

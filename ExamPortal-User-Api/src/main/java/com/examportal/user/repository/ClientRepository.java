@@ -14,9 +14,9 @@ import com.examportal.user.model.Client;
 public interface ClientRepository extends JpaRepository<Client, Long> {
 	Optional<Client> findByEmailAndPassword(String email, String password);
 
-	@Query("SELECT new com.app.dto.client.ClientListDTO(c.id, c.name, c.email, c.mobile, c.accStatus,\r\n"
-			+ "c.dateStamp, c.addressLine1, c.addressLine2, c.address,\r\n"
-			+ "c.subscription, c.examCount) FROM Client c")
+	@Query("SELECT new com.examportal.user.dto.client.ClientListDTO(c.id, c.name, c.email, c.mobile, c.accStatus,\r\n"
+			+ "c.dateStamp, c.addressLine1, c.addressLine2, c.address.pinCode,\r\n"
+			+ "c.subscription.id, c.examCount) FROM Client c")
 	Optional<List<ClientListDTO>> getClientDetails();
 
 	
