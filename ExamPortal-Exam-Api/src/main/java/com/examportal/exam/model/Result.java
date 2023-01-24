@@ -33,35 +33,25 @@ date_timestamp
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"dateStamp", "exam", "student"})
+@ToString
 public class Result extends BaseEntity {
-	public Result(Student student, Exam exam, int studentMarks, int totalMarks, String grade) {
-		super();
-		this.student = student;
-		this.exam = exam;
-		this.studentMarks = studentMarks;
-		this.totalMarks = totalMarks;
-		this.grade = grade;
-	}
+	
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "s_id", nullable = false)
-	private Student student;
+	@Column(name="student_id",nullable = false )
+	private long studentId;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ex_id", nullable = false)
-	private Exam exam;
 	
-	@Column(nullable = false)
+	
+	@Column(nullable = false,name="student_marks")
 	private int studentMarks;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,name="total_marks")
 	private int totalMarks;
 	
-	@Column
+	@Column(name="grade")
 	private String grade;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,name="date_stamp")
 	@CreationTimestamp
 	private LocalDateTime dateStamp;
 
@@ -75,20 +65,21 @@ public class Result extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student getStudent() {
-		return student;
+	public Result(long studentId, int studentMarks, int totalMarks, String grade, LocalDateTime dateStamp) {
+		super();
+		this.studentId = studentId;
+		this.studentMarks = studentMarks;
+		this.totalMarks = totalMarks;
+		this.grade = grade;
+		this.dateStamp = dateStamp;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public long getStudentId() {
+		return studentId;
 	}
 
-	public Exam getExam() {
-		return exam;
-	}
-
-	public void setExam(Exam exam) {
-		this.exam = exam;
+	public void setStudentId(long studentId) {
+		this.studentId = studentId;
 	}
 
 	public int getStudentMarks() {
@@ -122,6 +113,7 @@ public class Result extends BaseEntity {
 	public void setDateStamp(LocalDateTime dateStamp) {
 		this.dateStamp = dateStamp;
 	}
+
 	
 	
 	

@@ -45,6 +45,8 @@ public class StudentRegisterDto {
 	private String gender;
 	@NotNull(message = " Roll No  must be supplied")
 	private int rollNo;
+	private long skillId;
+	private long experienceId;
 	public StudentRegisterDto() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -144,6 +146,23 @@ public class StudentRegisterDto {
 	}
 	public void setRollNo(int rollNo) {
 		this.rollNo = rollNo;
+	}
+	public long getSkillId() {
+		return skillId;
+	}
+	public void setSkillId(long skillId) {
+		this.skillId = skillId;
+	}
+	public long getExperienceId() {
+		return experienceId;
+	}
+	public void setExperienceId(long experienceId) {
+		this.experienceId = experienceId;
+	}
+	public StudentRegisterDto(long skillId, long experienceId) {
+		super();
+		this.skillId = skillId;
+		this.experienceId = experienceId;
 	}
 	
 	

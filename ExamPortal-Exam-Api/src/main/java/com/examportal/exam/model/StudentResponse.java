@@ -2,8 +2,11 @@ package com.examportal.exam.model;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -11,6 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,29 +36,21 @@ date_timestamp
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString(exclude = {"dateStamp", "question", "student"})
+@ToString
 public class StudentResponse extends BaseEntity {
 	
 
-	public StudentResponse(Student student, Question question, String response) {
-		super();
-		this.student = student;
-		this.question = question;
-		this.response = response;
-	}
-
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "s_id", nullable = false)
-	private Student student;
 	
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "q_id", nullable = false)
-	private Question question;
+	@Column(name="student_id", nullable = false)
+	private long StudentId;
 	
-	@Column(length = 20)
-	private String response;
+	@Column(name="question_id")
+	private long questionId;
+	@Column(name="response")
+	 @ElementCollection(targetClass=String.class)
+	 private List<String> response;
 	
-	@Column(nullable = false)
+	@Column(nullable = false,name="date_stamp")
 	@CreationTimestamp
 	private LocalDateTime dateStamp;
 
@@ -68,27 +64,40 @@ public class StudentResponse extends BaseEntity {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student getStudent() {
-		return student;
+	
+
+	
+
+	public StudentResponse(long studentId, long questionId, List<String> response, LocalDateTime dateStamp) {
+		super();
+		StudentId = studentId;
+		this.questionId = questionId;
+		this.response = response;
+		this.dateStamp = dateStamp;
 	}
 
-	public void setStudent(Student student) {
-		this.student = student;
+	public long getStudentId() {
+		return StudentId;
 	}
 
-	public Question getQuestion() {
-		return question;
+	public void setStudentId(long studentId) {
+		StudentId = studentId;
 	}
 
-	public void setQuestion(Question question) {
-		this.question = question;
+	public long getQuestionId() {
+		return questionId;
 	}
 
-	public String getResponse() {
+	public void setQuestionId(long questionId) {
+		this.questionId = questionId;
+	}
+
+	
+	public List<String> getResponse() {
 		return response;
 	}
 
-	public void setResponse(String response) {
+	public void setResponse(List<String> response) {
 		this.response = response;
 	}
 
