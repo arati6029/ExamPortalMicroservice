@@ -25,7 +25,7 @@ CREATE TABLE `examPortalmicroserviceExam`.`question_bank` (
   INDEX `fk_skill_idx` (`skill_id` ASC),
   CONSTRAINT `fk_skill`
     FOREIGN KEY (`skill_id`)
-    REFERENCES `examportalexamtest`.`skill` (`id`)
+    REFERENCES `examPortalmicroserviceExam`.`skill` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE);
 

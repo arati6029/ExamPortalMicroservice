@@ -23,6 +23,12 @@ public class Skill extends BaseEntity{
 	}
 
 
+	public Skill(Long id) {
+		super(id);
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public Skill(String skillName, String description) {
 		super();
 		this.skillName = skillName;

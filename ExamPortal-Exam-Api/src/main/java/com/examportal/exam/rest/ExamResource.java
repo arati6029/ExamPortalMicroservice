@@ -17,11 +17,11 @@ public class ExamResource {
 	@Autowired
 	private IExamService examService;
 	
-	@PostMapping("/")
+	@PostMapping("/exam")
 	ResponseEntity<?> addStudentSkillAndExp(@RequestBody SkillAndExpDTO skAndExpDto){
 		StudentCalibre stCalibre= new StudentCalibre(skAndExpDto.getStudentId(),skAndExpDto.getSkillId(),skAndExpDto.getExperienceId());
 		examService.addStudentCalibre(stCalibre);
-		return ResponseEntity.ok().body("Student Calibres Area Added....");
+		return ResponseEntity.ok().body("Student Calibres Are Added....");
 	}
 
 }

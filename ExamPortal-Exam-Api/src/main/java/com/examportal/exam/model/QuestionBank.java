@@ -89,8 +89,8 @@ public class QuestionBank extends BaseEntity {
 	
 	
 //	@Column(name="skill_id",nullable = false)
-	@OneToOne
-	private Skill skillId;
+	@ManyToOne
+	private Skill skill;
 	@Column(name="file_name")
 	private String fileName;
 	public String getQuestion() {
@@ -130,12 +130,7 @@ public class QuestionBank extends BaseEntity {
 	public void setExpectedAnswers(List<String> expectedAnswers) {
 		this.expectedAnswers = expectedAnswers;
 	}
-	public Skill getSkillId() {
-		return skillId;
-	}
-	public void setSkillId(Skill skillId) {
-		this.skillId = skillId;
-	}
+
 	public int getMarksPerQues() {
 		return marksPerQues;
 	}
@@ -168,10 +163,10 @@ public class QuestionBank extends BaseEntity {
 		this.severity = severity;
 	}
 	public Skill getSkill() {
-		return skillId;
+		return skill;
 	}
 	public void setSkill(Skill skill) {
-		this.skillId = skill;
+		this.skill = skill;
 	}
 	public String getFileName() {
 		return fileName;
@@ -189,7 +184,7 @@ public class QuestionBank extends BaseEntity {
 	}
 	public QuestionBank(String question, String optA, String optB, String optC, String optD, List<String> expectedAnswers,
 			int marksPerQues, int negMarksPerQues, byte[] imageData, LocalDateTime dateStamp, Severity severity,
-			Skill skill, String fileName) {
+			Skill skill) {
 		super();
 		this.question = question;
 		this.optA = optA;
@@ -202,8 +197,40 @@ public class QuestionBank extends BaseEntity {
 		this.imageData = imageData;
 		this.dateStamp = dateStamp;
 		this.severity = severity;
-		this.skillId = skill;
-		this.fileName = fileName;
+		this.skill = skill;
+		
+	}
+	public QuestionBank(String question, String optA, String optB, String optC, String optD,
+			List<String> expectedAnswers, int marksPerQues, int negMarksPerQues, Severity severity
+			) {
+		
+		
+			this.question = question;
+			this.optA = optA;
+			this.optB = optB;
+			this.optC = optC;
+			this.optD = optD;
+			this.expectedAnswers = expectedAnswers;
+			this.marksPerQues = marksPerQues;
+			this.negMarksPerQues = negMarksPerQues;
+			
+			
+			this.severity = severity;
+			
+	}
+	public QuestionBank(String question, String optA, String optB, String optC, String optD,
+			List<String> expectedAnswers, int marksPerQues, int negMarksPerQues, Severity severity, Skill skill) {
+		this.question = question;
+		this.optA = optA;
+		this.optB = optB;
+		this.optC = optC;
+		this.optD = optD;
+		this.expectedAnswers = expectedAnswers;
+		this.marksPerQues = marksPerQues;
+		this.negMarksPerQues = negMarksPerQues;
+		
+		
+		this.severity = severity;
 	}
 	
 	

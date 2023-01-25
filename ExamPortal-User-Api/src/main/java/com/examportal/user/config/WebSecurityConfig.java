@@ -43,7 +43,7 @@ public class WebSecurityConfig {
 		}).
 		and().
 		authorizeRequests()
-		.antMatchers("/admin/client").permitAll()
+		.antMatchers(HttpMethod.POST,"/admin/client").permitAll()
 		.antMatchers("/admin").hasRole("ADMIN")
 		
 		.antMatchers("/client").hasRole("CLIENT")

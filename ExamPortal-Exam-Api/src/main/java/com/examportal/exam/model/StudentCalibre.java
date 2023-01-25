@@ -4,7 +4,10 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
-
+import javax.persistence.Entity;
+import javax.persistence.Table;
+@Entity
+@Table(name="student_calibre")
 public class StudentCalibre extends BaseEntity{
 	@Column(name="student_id")
 private long studentId;
