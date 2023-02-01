@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.examportal.exam.dto.SkillAndExpDTO;
-import com.examportal.exam.model.StudentCalibre;
+import com.examportal.exam.model.StudentCompetency;
 import com.examportal.exam.service.IExamService;
 
 @RestController
@@ -19,7 +19,7 @@ public class ExamResource {
 	
 	@PostMapping("/exam")
 	ResponseEntity<?> addStudentSkillAndExp(@RequestBody SkillAndExpDTO skAndExpDto){
-		StudentCalibre stCalibre= new StudentCalibre(skAndExpDto.getStudentId(),skAndExpDto.getSkillId(),skAndExpDto.getExperienceId());
+		StudentCompetency stCalibre= new StudentCompetency(skAndExpDto.getStudentId(),skAndExpDto.getSkillId(),skAndExpDto.getExperienceId());
 		examService.addStudentCalibre(stCalibre);
 		return ResponseEntity.ok().body("Student Calibres Are Added....");
 	}

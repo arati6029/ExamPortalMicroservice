@@ -9,5 +9,5 @@ CREATE TABLE result(
   grade INT NULL,
   date_stamp DATETIME NULL,
   PRIMARY KEY (id),
- FOREIGN KEY (student_id) REFERENCES student_calibre (student_id)
+ FOREIGN KEY (student_id) REFERENCES student_competency (student_id)
   );
