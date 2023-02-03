@@ -43,10 +43,11 @@ public class WebSecurityConfig {
 		}).
 		and().
 		authorizeRequests()
-		.antMatchers(HttpMethod.POST,"/admin/client").permitAll()
-		.antMatchers("/admin").hasRole("ADMIN")
+		.antMatchers("/api/V1.0/swagger-ui/**").permitAll()
+		.antMatchers(HttpMethod.POST,"/admins/client").permitAll()
+		.antMatchers("/admins").hasRole("ADMIN")
 		
-		.antMatchers("/client").hasRole("CLIENT")
+		.antMatchers("/clients").hasRole("CLIENT")
 		.antMatchers("/subscription/get_sub_details","/subscription/get_sub_list","/address/get_pincode_list", "/user/**","/client/register","/forgot_password","/recover_password","/pdf/generate/{id}").permitAll() // enabling global																					// /auth
 				// only required for JS clients (react / angular)
 		.antMatchers(HttpMethod.OPTIONS).permitAll().

@@ -15,8 +15,8 @@ import lombok.ToString;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class AdminDTO {
 	@NotBlank(message = "Name must be supplied")

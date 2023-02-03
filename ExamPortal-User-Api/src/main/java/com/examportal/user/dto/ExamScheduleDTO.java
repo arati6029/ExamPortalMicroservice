@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 public class ExamScheduleDTO {
 	
-public ExamScheduleDTO(String examName, LocalDate scheduledDate, LocalTime scheduledTime) {
-		this.examName = examName;
-		this.scheduledDate = scheduledDate;
-		this.scheduledTime = scheduledTime;
-	}
+//public ExamScheduleDTO(String examName, LocalDate scheduledDate, LocalTime scheduledTime) {
+//		this.examName = examName;
+//		this.scheduledDate = scheduledDate;
+//		this.scheduledTime = scheduledTime;
+//	}
 private String examName;
 private LocalDate scheduledDate;
 private LocalTime scheduledTime;

@@ -37,7 +37,7 @@ exam_count
 
 @Getter
 @Setter
-@NoArgsConstructor
+//@NoArgsConstructor
 @AllArgsConstructor
 @ToString
 public class StudentListDTO {
@@ -96,17 +96,17 @@ public class StudentListDTO {
 		this.status = status;
 	}
 	//StudentListDTO(s.id, s.rollNo, s.name, s.email,s.dob, s.gender, s.accStatus)
-	public StudentListDTO(long id, int rollNo, String name, String email, LocalDate dob, GenderEnum gender,
-			boolean status) {
-		super();
-		this.id = id;
-		this.rollNo = rollNo;
-		this.name = name;
-		this.email = email;
-		this.dob = dob;
-		this.gender = gender;
-		this.status = status;
-	}
+//	public StudentListDTO(long id, int rollNo, String name, String email, LocalDate dob, GenderEnum gender,
+//			boolean status) {
+//		super();
+//		this.id = id;
+//		this.rollNo = rollNo;
+//		this.name = name;
+//		this.email = email;
+//		this.dob = dob;
+//		this.gender = gender;
+//		this.status = status;
+//	}
 	
 	
 }

@@ -31,8 +31,8 @@ exam_count
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class ExamAdminListDTO {
 	private long id;

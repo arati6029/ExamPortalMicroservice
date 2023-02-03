@@ -37,8 +37,8 @@ exam_count
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class ExamAdminDTO {
 	public ExamAdminDTO() {

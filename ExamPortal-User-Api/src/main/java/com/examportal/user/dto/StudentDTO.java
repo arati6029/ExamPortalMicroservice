@@ -50,29 +50,29 @@ public class StudentDTO {
 	private LocalDate dob;
 	private GenderEnum gender;
 	//e.id, e.name, e.email, e.mobile, e.role, e.accStatus,e.dateStamp, e.addressLine1, e.addressLine2, e.address, e.rollNo, e.client.id, e.dob, e.gender
-	public StudentDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public StudentDTO(long id, String name, String email, String mobile, RoleEnum role, boolean accStatus,
-			LocalDateTime dateStamp, String addressLine1, String addressLine2, String pincode, int rollNo,
-			long examAdminId, LocalDate dob, GenderEnum gender) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.mobile = mobile;
-		this.role = role;
-		this.accStatus = accStatus;
-		this.dateStamp = dateStamp;
-		this.addressLine1 = addressLine1;
-		this.addressLine2 = addressLine2;
-		this.pincode = pincode;
-		this.rollNo = rollNo;
-		this.examAdminId = examAdminId;
-		this.dob = dob;
-		this.gender = gender;
-	}
+//	public StudentDTO() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//	public StudentDTO(long id, String name, String email, String mobile, RoleEnum role, boolean accStatus,
+//			LocalDateTime dateStamp, String addressLine1, String addressLine2, String pincode, int rollNo,
+//			long examAdminId, LocalDate dob, GenderEnum gender) {
+//		super();
+//		this.id = id;
+//		this.name = name;
+//		this.email = email;
+//		this.mobile = mobile;
+//		this.role = role;
+//		this.accStatus = accStatus;
+//		this.dateStamp = dateStamp;
+//		this.addressLine1 = addressLine1;
+//		this.addressLine2 = addressLine2;
+//		this.pincode = pincode;
+//		this.rollNo = rollNo;
+//		this.examAdminId = examAdminId;
+//		this.dob = dob;
+//		this.gender = gender;
+//	}
 	public long getId() {
 		return id;
 	}

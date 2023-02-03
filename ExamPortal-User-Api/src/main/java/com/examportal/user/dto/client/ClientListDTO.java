@@ -31,7 +31,7 @@ exam_count
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @ToString
 public class ClientListDTO {
 	private long id;
@@ -48,11 +48,11 @@ public class ClientListDTO {
 	private int examAdminCount;
 	private int studentCount;
 	
-	public ClientListDTO() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
+//	public ClientListDTO() {
+//		super();
+//		// TODO Auto-generated constructor stub
+//	}
+//
 	public ClientListDTO(long id,String name, String email, String mobile, boolean accStatus, LocalDateTime dateStamp,
 			String addressLine1, String addressLine2, String pincode, long subscriptionId, int examCount) {
 		super();
@@ -87,115 +87,115 @@ public class ClientListDTO {
 		this.examAdminCount = examAdminCount;
 		this.studentCount = studentCount;
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public boolean isAccStatus() {
-		return accStatus;
-	}
-
-	public void setAccStatus(boolean accStatus) {
-		this.accStatus = accStatus;
-	}
-
-	public LocalDateTime getDateStamp() {
-		return dateStamp;
-	}
-
-	public void setDateStamp(LocalDateTime dateStamp) {
-		this.dateStamp = dateStamp;
-	}
-
-	public String getAddressLine1() {
-		return addressLine1;
-	}
-
-	public void setAddressLine1(String addressLine1) {
-		this.addressLine1 = addressLine1;
-	}
-
-	public String getAddressLine2() {
-		return addressLine2;
-	}
-
-	public void setAddressLine2(String addressLine2) {
-		this.addressLine2 = addressLine2;
-	}
-
-	
-
-	public String getPincode() {
-		return pincode;
-	}
-
-	public void setPincode(String pincode) {
-		this.pincode = pincode;
-	}
-
-	
-
-	public long getSubscriptionId() {
-		return subscriptionId;
-	}
-
-	public void setSubscriptionId(long subscriptionId) {
-		this.subscriptionId = subscriptionId;
-	}
-
-	public int getExamCount() {
-		return examCount;
-	}
-
-	public void setExamCount(int examCount) {
-		this.examCount = examCount;
-	}
-
-	public int getExamAdminCount() {
-		return examAdminCount;
-	}
-
-	public void setExamAdminCount(int examAdminCount) {
-		this.examAdminCount = examAdminCount;
-	}
-
-	public int getStudentCount() {
-		return studentCount;
-	}
-
-	public void setStudentCount(int studentCount) {
-		this.studentCount = studentCount;
-	}
-	
+//
+//	public long getId() {
+//		return id;
+//	}
+//
+//	public void setId(long id) {
+//		this.id = id;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getEmail() {
+//		return email;
+//	}
+//
+//	public void setEmail(String email) {
+//		this.email = email;
+//	}
+//
+//	public String getMobile() {
+//		return mobile;
+//	}
+//
+//	public void setMobile(String mobile) {
+//		this.mobile = mobile;
+//	}
+//
+//	public boolean isAccStatus() {
+//		return accStatus;
+//	}
+//
+//	public void setAccStatus(boolean accStatus) {
+//		this.accStatus = accStatus;
+//	}
+//
+//	public LocalDateTime getDateStamp() {
+//		return dateStamp;
+//	}
+//
+//	public void setDateStamp(LocalDateTime dateStamp) {
+//		this.dateStamp = dateStamp;
+//	}
+//
+//	public String getAddressLine1() {
+//		return addressLine1;
+//	}
+//
+//	public void setAddressLine1(String addressLine1) {
+//		this.addressLine1 = addressLine1;
+//	}
+//
+//	public String getAddressLine2() {
+//		return addressLine2;
+//	}
+//
+//	public void setAddressLine2(String addressLine2) {
+//		this.addressLine2 = addressLine2;
+//	}
+//
+//
+//
+//	public String getPincode() {
+//		return pincode;
+//	}
+//
+//	public void setPincode(String pincode) {
+//		this.pincode = pincode;
+//	}
+//
+//
+//
+//	public long getSubscriptionId() {
+//		return subscriptionId;
+//	}
+//
+//	public void setSubscriptionId(long subscriptionId) {
+//		this.subscriptionId = subscriptionId;
+//	}
+//
+//	public int getExamCount() {
+//		return examCount;
+//	}
+//
+//	public void setExamCount(int examCount) {
+//		this.examCount = examCount;
+//	}
+//
+//	public int getExamAdminCount() {
+//		return examAdminCount;
+//	}
+//
+//	public void setExamAdminCount(int examAdminCount) {
+//		this.examAdminCount = examAdminCount;
+//	}
+//
+//	public int getStudentCount() {
+//		return studentCount;
+//	}
+//
+//	public void setStudentCount(int studentCount) {
+//		this.studentCount = studentCount;
+//	}
+//
 	
 	
 	

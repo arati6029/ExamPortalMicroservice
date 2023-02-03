@@ -66,7 +66,7 @@ public class AdminResource {
 	
 	}
 	//Client list
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')")
 	@GetMapping("/clients")
 	public ResponseEntity<?> getClientList() {
 		List<ClientListDTO> clientList=adminService.getClientDetails();
@@ -77,7 +77,7 @@ public class AdminResource {
 		}
 	}
 	//change client status
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping("/{cId}/client")
 	public ResponseEntity<?> activateDeactivateClient(@PathVariable long cId) {
 		
@@ -96,7 +96,7 @@ public class AdminResource {
 		}
 	}
 	//add new subscription
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')")
 	@PostMapping("/subscription")
 	public ResponseEntity<?> addSubscription(@RequestBody SubscriptionDTO newSubscriptionDto) {
 		// String name, String email, String mobile, String password, RoleEnum role
@@ -105,7 +105,7 @@ public class AdminResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("Subscription added successfully"));
 	}
 	//update subscription details from admin
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')")
 	@PutMapping("/subscription")
 	public ResponseEntity<?> editSubscription(@RequestBody SubscriptionDTO newSubscriptionDto) {
 		// String name, String email, String mobile, String password, RoleEnum role
@@ -114,7 +114,7 @@ public class AdminResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse("Subscription edited successfully"));
 	}
 	//delete subscription
-	@PreAuthorize("hasAuthority('ADMIN')")
+//	@PreAuthorize("hasAuthority('ADMIN')")
 	@DeleteMapping("/{subId}/subscription")
 	public ResponseEntity<?> deleteSubscription(@PathVariable long subId) {
 		// String name, String email, String mobile, String password, RoleEnum role
